@@ -24,7 +24,7 @@ function onLoad()
 		}
 		else
 		{
-			console.log( "Audio is paused")
+			console.log( "Audio is paused" );
 		}
 	})();	
 }
