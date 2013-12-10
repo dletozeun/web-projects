@@ -91,7 +91,10 @@ function start( request, response )
 
 function streamAudio( request, response )
 {
-	console.log( "Start streaming audio - " + (new Date).toString() );
+	var userId = "user agent : " + util.inspect( request.headers[ "user-agent" ] ) + " IP : " + request.connection.remoteAddress;
+
+	console.log( "Start streaming audio - " + (new Date).toString() + "  for : " + userId );
+
 
 	response.writeHead( 200, { "Content-Type" : 'audio/mpeg;codecs="mp3"',
 							   "Transfer-Encoding" : "chunked" } );
@@ -99,21 +102,17 @@ function streamAudio( request, response )
 	var audioReadStream = fs.createReadStream( "data/a.mp3" );
 	//var audioWriteStream = fs.createWriteStream( "test.mp3" );
 
-	console.log( "Start audio reader : " + util.inspect( audioReadStream ) );
+	//console.log( "Start audio reader : " + util.inspect( audioReadStream ) );
 	//console.log( "Start inspect response : " + util.inspect( response ) );
 
 	audioReadStream.pipe( response );
 
 	audioReadStream.on( "end", function()
 	{
-		console.log( "Finished writing mp3" );
-		console.log( "End audio reader : " + util.inspect( audioReadStream ) );
-		//console.log( "End inspect response : " + util.inspect( response ) );
+		console.log( "Finished streaming audio - " + (new Date).toString() + "  for : " + userId );
 	});
 
-	//fs.createReadStream( "Disclosure - Boiling ft. Sinead Harnett.mp3" ).pipe( response );
-
-	console.log( "Now streaming audio - " + (new Date).toString() );
+	console.log( "Now streaming audio - " + (new Date).toString() + "  for : " + userId );
 }
 
 http.createServer( onRequest ).listen( 8080 );
