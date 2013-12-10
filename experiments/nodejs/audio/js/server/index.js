@@ -92,12 +92,17 @@ function start( request, response )
 function streamAudio( request, response )
 {
 	var userId = "user agent : " + util.inspect( request.headers[ "user-agent" ] ) + " IP : " + request.connection.remoteAddress;
+	var filePath = "data/a.mp3";
 
 	console.log( "Start streaming audio - " + (new Date).toString() + "  for : " + userId );
 
+	var fileSize = fs.statSync( filePath ).size;
 
 	response.writeHead( 200, { "Content-Type" : 'audio/mpeg;codecs="mp3"',
-							   "Transfer-Encoding" : "chunked" } );
+							   "Transfer-Encoding" : "chunked",
+							   "Cache-control" : "no-cache",
+							   "Content-Range" : "bytes 0-" + ( fileSize - 1 ) + "/" + fileSize,
+							   "Accept-Ranges" : "bytes" } );
 
 	var audioReadStream = fs.createReadStream( "data/a.mp3" );
 	//var audioWriteStream = fs.createWriteStream( "test.mp3" );
