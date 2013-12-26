@@ -4,8 +4,17 @@
   	<meta charset="utf-8" />
 	<title>Audio test</title>
 	<script type="text/javascript" src="js/client/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body onload="onLoad()">
+<div class="audioTrack">
+	<a class="playbackButton" href="#">►</a>
+	<div class="audioTrack-title">{{title}}</div>
+	<div class="audioTrack-artist">{{artist}}</div>
+	<div class="audioTrack-album">{{album}}</div>
+</div>
+
+	<div id="trackList">{{trackList}}</div>
 	<p id="audio_player">Audio player</p>
 	<div id="log"></div>
 	<audio id="audio" src="/streamAudio" type='audio/mpeg;codecs="mp3"' autoplay="autoplay">

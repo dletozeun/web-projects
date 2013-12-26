@@ -4,7 +4,7 @@ var url = require( "url" );
 var util = require( "util" );
 var path = require( "path" );
 var zlib = require( "zlib" );
-
+var mime = require( "mime" );
 
 var handles = {}
 handles[ "/" ] = start;
@@ -31,33 +31,8 @@ function onRequest( request, response )
 			if( exists )
 			{
 				//console.log( "File : " + filePath + " exists" );
-
-				var contentType = "text/plain";
-				var extName = path.extname( pathName );
-
-				//console.log( "extName : " + extName );
-
-				switch( extName )
-				{
-					case ".js":
-						contentType = "application/javascript";
-						break;
-					case ".htm":
-					case ".html":
-						contentType = "text/html";
-						break;
-					case ".css":
-						contentType = "text/css";
-						break;
-					case ".mp3":
-						contentType = "audio/mpeg";
-						break;
-					default:
-						contentType = "text/plain";
-						break;
-
-				}
-
+				
+				var contentType = mime.lookup( filePath );
 				console.log( "Request for file : " + filePath + "  Content-Type : " + contentType );
 				
 				if( contentType.indexOf( "text/" ) >= 0 || contentType.indexOf( "application/" ) >= 0 )

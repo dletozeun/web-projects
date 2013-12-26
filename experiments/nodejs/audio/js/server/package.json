@@ -1,0 +1,10 @@
+{
+  "name": "audio",
+  "version": "0.0.1",
+  "dependencies": {
+    "id3js": "*",
+    "mime": "*",
+    "mongodb": "*",
+    "prototypes": "*",
+  }
+}

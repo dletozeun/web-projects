@@ -1,0 +1,16 @@
+.audioTrack {
+	background: #0f0;
+	border: solid 2px;
+}
+
+.audioTrack-title {
+	float: left;
+}
+
+.audioTrack-artist {
+	float: left;
+}
+
+.audioTrack-album {
+	float: left;
+}
