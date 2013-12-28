@@ -1,2 +1,2 @@
-node js/server/index.js
+node index.js
 pause;
