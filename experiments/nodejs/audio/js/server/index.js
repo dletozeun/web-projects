@@ -74,10 +74,11 @@ function streamAudio( request, response )
 	var fileSize = fs.statSync( filePath ).size;
 
 	response.writeHead( 200, { "Content-Type" : 'audio/mpeg;codecs="mp3"',
-							   "Transfer-Encoding" : "chunked",
-							   "Cache-control" : "no-cache",
+							   "Transfer-Encoding" : "binary",
 							   "Content-Range" : "bytes 0-" + ( fileSize - 1 ) + "/" + fileSize,
-							   "Accept-Ranges" : "bytes" } );
+							   "Accept-Ranges" : "bytes",
+							   "Content-Length" : fileSize.toString(),
+							   "Cache-control" : "public" } );
 
 	var audioReadStream = fs.createReadStream( "data/a.mp3" );
 	//var audioWriteStream = fs.createWriteStream( "test.mp3" );
