@@ -1,0 +1,10 @@
+{
+  "name" : "audio",
+  "version" : "0.0.1",
+  "dependencies": {
+    "mongodb" : "*",
+    "prototypes" : "*",
+    "express" : "3.x",
+    "ejs" : "*"
+  }
+}
