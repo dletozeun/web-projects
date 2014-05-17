@@ -1,0 +1,35 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #99aaaa;
+}
+
+#content {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 100;
+}
+
+.tile {
+    position: absolute;
+
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+
+    background-color: #aacccc;
+
+    font-family: 'Raleway', sans-serif;
+    color : #555;
+    text-align: center;
+}
+
+.linkedIn-text {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
